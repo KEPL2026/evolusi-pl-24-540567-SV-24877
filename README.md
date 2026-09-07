@@ -7,6 +7,140 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Project Setup Instructions
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- **PHP** 8.2 or higher
+- **Composer** (PHP dependency manager)
+- **Node.js** and **npm** (for frontend assets)
+- **SQLite**, **MySQL**, or **PostgreSQL** (for database)
+- **Git** (for version control)
+
+### Installation Steps
+
+1. **Clone or download the project**
+   ```bash
+   cd evolusi-pl-24-540567-SV-24877
+   ```
+
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Create environment configuration file**
+   ```bash
+   cp .env.example .env
+   ```
+
+5. **Generate application key**
+   ```bash
+   php artisan key:generate
+   ```
+
+6. **Configure your database**
+   
+   Edit the `.env` file and update the following database variables:
+   ```
+   DB_CONNECTION=sqlite  # or mysql, pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=kepl_database
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+
+7. **Run database migrations**
+   ```bash
+   php artisan migrate
+   ```
+
+8. **(Optional) Seed the database with sample data**
+   ```bash
+   php artisan db:seed
+   ```
+
+9. **Build frontend assets**
+   ```bash
+   npm run build
+   ```
+   
+   For development with hot reload:
+   ```bash
+   npm run dev
+   ```
+
+### Running the Application
+
+**Development Server:**
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+**With frontend development server (in another terminal):**
+```bash
+npm run dev
+```
+
+### Testing
+
+Run the test suite:
+```bash
+php artisan test
+```
+
+### Additional Useful Commands
+
+- **Clear caches:**
+  ```bash
+  php artisan cache:clear
+  php artisan config:clear
+  php artisan view:clear
+  ```
+
+- **Create a new migration:**
+  ```bash
+  php artisan make:migration migration_name
+  ```
+
+- **Create a new model with migration:**
+  ```bash
+  php artisan make:model ModelName -m
+  ```
+
+- **Create a new controller:**
+  ```bash
+  php artisan make:controller ControllerName
+  ```
+
+- **Run code quality checks:**
+  ```bash
+  php artisan pint
+  ```
+
+### Troubleshooting
+
+- **"No application encryption key has been specified"**
+  - Run: `php artisan key:generate`
+
+- **Database connection errors**
+  - Verify database credentials in `.env` file
+  - Ensure database server is running
+  - Check database name and user permissions
+
+- **Permission errors on storage or bootstrap folders**
+  - Run: `chmod -R 775 storage bootstrap/cache`
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
